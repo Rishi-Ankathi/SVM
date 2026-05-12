@@ -10,9 +10,10 @@ df = pd.read_csv('loan.csv')
 st.title('SVC Classifier for Loan Approval Prediction')
 st.subheader('Dataset Overview')
 st.write(df.head())
-le = LabelEncoder()
+# Encode each categorical column with its own LabelEncoder
 for column in df.columns:
     if df[column].dtype == 'object':
+        le = LabelEncoder()
         df[column] = le.fit_transform(df[column])
 
 x = df.drop('loan_status', axis=1)
