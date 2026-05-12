@@ -35,3 +35,41 @@
 -> **difference btw grid search cv , randomised search cv**
         GridSearchCV performs an exhaustive, predefined search, while RandomizedSearchCV samples values randomly based on a budget
         
+
+# Equation of hyperplane
+ 
+  w.x + b =0
+
+  where, w= weights
+         x= input
+         b= bias/intercept
+
+  Prediction rule:
+    if w.x + b >= 0 --> class 1
+    else --> class 2
+
+# Hyper parameters
+
+linear = linear data
+
+poly = polynomial relationship
+
+rdf = non-linear complex data
+
+sigmoid = neural-network-like behaviour
+
+
+c = 1  will control overfitting and underfitting
+
+small c --> wider margin --> underfit
+
+large c --> tries to classify all points --> may overfit
+
+
+gamma = scale
+
+controls how far the influence of one data point reaches 
+
+small gamma value --> generalised model
+
+high gamma value --> model memorizes data
