@@ -14,26 +14,31 @@ st.title('SVC Classifier for Loan Approval Prediction')
 st.subheader('Dataset Overview')
 st.write(df.head())
 
+# REMOVE SPACES FROM COLUMN NAMES
+df.columns = df.columns.str.strip()
+
 # STORE ENCODERS
 label_encoders = {}
 
-# ENCODE CATEGORICAL COLUMNS
+# ENCODE ALL OBJECT COLUMNS
 for column in df.columns:
 
     if df[column].dtype == 'object':
+
+        # convert everything to string
+        df[column] = df[column].astype(str)
 
         le = LabelEncoder()
 
         df[column] = le.fit_transform(df[column])
 
-        # SAVE ENCODER
         label_encoders[column] = le
 
 # FEATURES AND TARGET
 x = df.drop('loan_status', axis=1)
 y = df['loan_status']
 
-# SPLIT DATA
+# TRAIN TEST SPLIT
 x_train, x_test, y_train, y_test = train_test_split(
     x,
     y,
@@ -41,16 +46,17 @@ x_train, x_test, y_train, y_test = train_test_split(
     random_state=42
 )
 
-# TRAIN MODEL
+# MODEL
 svc = SVC(
     kernel='rbf',
     C=1,
     gamma='scale'
 )
 
+# TRAIN MODEL
 svc.fit(x_train, y_train)
 
-# PREDICTION
+# PREDICTIONS
 y_pred = svc.predict(x_test)
 
 # ACCURACY
