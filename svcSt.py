@@ -38,6 +38,8 @@ for column in df.columns:
 x = df.drop('loan_status', axis=1)
 y = df['loan_status']
 
+st.write(x.dtypes)
+
 # TRAIN TEST SPLIT
 x_train, x_test, y_train, y_test = train_test_split(
     x,
