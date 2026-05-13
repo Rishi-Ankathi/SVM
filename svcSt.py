@@ -61,8 +61,27 @@ svc.fit(x_train, y_train)
 # PREDICTIONS
 y_pred = svc.predict(x_test)
 
+st.subheader('Predictions vs Actual')
+results_df = pd.DataFrame({
+    'Predicted': y_pred,
+    'Actual': y_test
+})
+st.write(results_df)
+
 # ACCURACY
 accuracy = accuracy_score(y_test, y_pred)
 
 st.subheader('Model Evaluation')
 st.write(f'Accuracy: {accuracy:.2f}')
+
+# confusion matrix
+from sklearn.metrics import confusion_matrix
+conf_matrix = confusion_matrix(y_test, y_pred)
+st.subheader('Confusion Matrix')
+st.write(conf_matrix)
+
+# classification report
+from sklearn.metrics import classification_report
+class_report = classification_report(y_test, y_pred)
+st.subheader('Classification Report')
+st.text(class_report)
