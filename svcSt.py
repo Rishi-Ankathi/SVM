@@ -23,7 +23,7 @@ label_encoders = {}
 # ENCODE ALL OBJECT COLUMNS
 for column in df.columns:
 
-    if df[column].dtype == 'object':
+    if df[column].dtype == 'object' or df[column].dtype == 'string':
 
         # convert everything to string
         df[column] = df[column].astype(str)
