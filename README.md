@@ -1,3 +1,5 @@
+# This repository consists of SVC and SVR support vector machines implementation with a deployed streamlit application code that predicts loan approval
+
 # svm
 
 1. why we need svm?
